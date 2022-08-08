@@ -1,0 +1,224 @@
+
+@keyframes zoom {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+
+    .arrow-down {
+        position: absolute;
+        bottom: 20px;
+        font-size: .7rem;
+        font-weight: lighter;
+        width: 100%;
+        text-align: center;
+        transform: translate(-50%, -50%);
+        animation: zoom 2s infinite;
+    }
+
+    &__img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: .3;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    &__text {
+        z-index: 2;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        text-align: center;
+        transform: translate(-50%, -50%);
+        width: 100%;
+
+        h1 {
+            font-size: 4rem;
+            text-transform: capitalize;
+            // text-shadow: 2px 2px 2px #000, 2px 2px 2px #000, ;
+        }
+        p{
+            font-size: 1.2rem;
+            margin: 0;
+        }
+    }
+}
+
+.about {
+    padding: 1rem;
+    text-align: center;
+
+    &__wrapper {
+        padding: 3rem;
+        margin: auto;
+        width: 70%;
+        // grid-gap: 2rem;
+        // display: grid;
+        // grid-tremplate-columns: 40% 60%;
+
+        @include respond(small) {
+            width: 100%;
+        }
+    }
+
+
+    &__img {
+        padding: 10px;
+        margin: auto;
+    }
+
+    &__text {
+        display: block;
+        text-align: left;
+    }
+
+    &__footer {
+        display: flex;
+        justify-content: center;
+
+        img {
+            height: 50px;
+            margin: 2rem;
+        }
+    }
+}
+
+.services {
+    background-color: darken($bg, 2);
+    text-align: center;
+    padding: 5rem  3rem;
+
+    &__wrapper {
+
+        padding: 1rem;
+        display: grid;
+        grid-gap: 3rem;
+        grid-template-columns: repeat(3, 1fr);
+
+        @include respond(small) {
+            grid-template-columns: 100%;
+        }
+    }
+
+
+    &__service {
+        border: 1px solid rgb(0, 0, 0);
+        border-bottom: 3px solid rgb(0, 0, 0);
+        border-radius: $border-radius;
+        padding: 2rem 1.4rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: all .5s ease;
+
+        h4 {
+            color: $light;
+            margin: 1rem 0;
+        }
+
+        &:hover {
+            transform: scale(1.04);
+        }
+    }
+}
+
+.contact {
+    &__wrapper {
+        padding: 3rem;
+        display: flex;
+        justify-content: space-evenly;
+
+        @include respond(small) {
+            flex-direction: column;
+        }
+
+        >* {
+            width: 40%;
+
+            @include respond(small) {
+                width: 100%;
+            }
+        }
+
+        address {
+            padding: 10px;
+            display: block;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: flex-start;
+
+            a {
+                position: relative;
+                color: inherit;
+                text-transform: uppercase;
+                width: max-content;
+
+                &:after {
+                    content: '';
+                    display: block;
+                    margin: auto;
+                    height: 2px;
+                    width: 0px;
+                    background: transparent;
+                    transition: width .5s ease;
+                }
+
+                &:hover:after {
+                    width: 100%;
+                    background: $brand-color;
+                }
+            }
+
+            i {
+                margin-right: 5px;
+            }
+
+        }
+
+        form {
+            padding: 10px;
+            display: grid;
+
+            >* {
+                background-color: $bg;
+                margin: 6px 0;
+                padding: .7rem;
+                border: 1px solid #222;
+                border-radius: $border-radius;
+                color: $text;
+                outline: none;
+            }
+        }
+    }
+}
+
+.footer {
+    background-color: darken($bg, 5);
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    >* {
+        margin: 0 2rem;
+    }
+}
